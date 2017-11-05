@@ -46,7 +46,7 @@ export function timeToString(time = Date.now()) {
   return todayUTC.toISOString().split('T')[0]
 }
 
-export function getMetricMetaInfo() {
+export function getMetricMetaInfo(metric) {
   const info = {
     run: {
       displayName: 'Run',
@@ -68,16 +68,16 @@ export function getMetricMetaInfo() {
 
     },
     bike: {
-      displayName: 'Run',
-      max: 50,
+      displayName: 'Bike',
+      max: 100,
       unit: 'miles',
       step: 1,
       type: 'steppers',
       getIcon() {
         return (
           <View>
-            <MaterialIcons
-                  name='directions-run'
+            <MaterialCommunityIcons
+                  name='bike'
                   color={'black'}
                   size={35}
                   />
@@ -86,16 +86,16 @@ export function getMetricMetaInfo() {
       }
     },
     swim: {
-      displayName: 'Run',
-      max: 50,
-      unit: 'miles',
-      step: 1,
+      displayName: 'Swim',
+      max: 9900,
+      unit: 'meters',
+      step: 100,
       type: 'steppers',
       getIcon() {
         return (
           <View>
-            <MaterialIcons
-                  name='directions-run'
+            <MaterialCommunityIcons
+                  name='swim'
                   color={'black'}
                   size={35}
                   />
@@ -104,16 +104,16 @@ export function getMetricMetaInfo() {
       }
     },
     sleep: {
-      displayName: 'Run',
-      max: 50,
-      unit: 'miles',
+      displayName: 'Sleep',
+      max: 24,
+      unit: 'hours',
       step: 1,
-      type: 'steppers',
+      type: 'slider',
       getIcon() {
         return (
           <View>
-            <MaterialIcons
-                  name='directions-run'
+            <FontAwesome
+                  name='bed'
                   color={'black'}
                   size={35}
                   />
@@ -122,16 +122,16 @@ export function getMetricMetaInfo() {
       }
     },
     eat: {
-      displayName: 'Run',
-      max: 50,
-      unit: 'miles',
+      displayName: 'Eat',
+      max: 10,
+      unit: 'rating',
       step: 1,
-      type: 'steppers',
+      type: 'slider',
       getIcon() {
         return (
           <View>
-            <MaterialIcons
-                  name='directions-run'
+            <MaterialCommunityIcons
+                  name='food'
                   color={'black'}
                   size={35}
                   />
@@ -140,4 +140,6 @@ export function getMetricMetaInfo() {
       }
     }
   }
+
+return typeof metric === 'undefined'?info : info[metric]
 }
